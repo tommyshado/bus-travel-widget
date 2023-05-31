@@ -16,22 +16,69 @@
 
 
 function BusTravelApp(singleTrip) {
-    let singleTripsAmount = singleTrip || 0;
+    let singleTripsPoints = singleTrip || 0;
+    // create a variable for the location
+    let startLocation = '';
+    // create a variable for the cost of a single trip
+    let singleTripAmount = 0;
 
-    // create
-    function pointsOfSingleTrips(clientPoints) {
+    function pointsOfSingleTrips(clientPoints, location) {
         let points = Number(clientPoints);
-        if (points === 1) {
-            singleTripsAmount += points;
+        // if in the user the client selects location in the dropdown
+        if (location) {
+            // check if the points is equal to 1, since a single trip is usually one trip
+            if (points === 1) {
+                // add one to the singleTripsPoints variable
+                singleTripsPoints += points;
+                // reassign the startLocation with the current location
+                startLocation = location;
+            }
         }
     }
 
-    function getSingleTripAmount() {
-        return singleTripsAmount;
+    function singleTripCost(offPeak) {
+        // set the location to lower case
+        let lowerCaseLocation = startLocation.toLowerCase();
+        // check if the global variable `location` is equal to Khayelitsha without offPeak time travel 
+        if (lowerCaseLocation === 'khayelitsha') {
+            // add the cost of a single trip
+            singleTripAmount += 40;
+        }
+
+        if (lowerCaseLocation === 'khayelitsha' && offPeak) {
+            // when the time is not normal bus time add 25% to the amount
+            singleTripAmount += (40 * 25 / 100) + 40;
+        }
+
+        if (lowerCaseLocation === 'dunoon') {
+            singleTripAmount += 25;
+        }
+
+        if (lowerCaseLocation === 'dunoon' && offPeak) {
+            singleTripAmount += (25 * 25 / 100) + 25;
+        }
+
+        if (lowerCaseLocation === 'mitchells plain') {
+            singleTripAmount += 30;
+        }
+
+        if (lowerCaseLocation === 'mitchells plain' && offPeak) {
+            singleTripAmount += (30 * 25 / 100) + 30;
+        }
+    }
+
+    function getSingleTripPoints() {
+        return singleTripsPoints;
+    }
+
+    function getSingleTripCost() {
+        return singleTripAmount;
     }
 
     return {
         pointsOfSingleTrips,
-        getSingleTripAmount
+        getSingleTripPoints,
+        singleTripCost,
+        getSingleTripCost
     }
 }
