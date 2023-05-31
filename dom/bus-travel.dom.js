@@ -5,6 +5,7 @@ const destination = document.querySelector('#destination');
 // get the calculate dom elements reference for the bus travel widget
 const singleTripsNum = document.querySelector('.singleTripsNumber');
 const singleTripPrice = document.querySelector('.singleTripsPrice');
+const tripsReturn = document.querySelector('.numberOfReturnTrips');
 
 // buttons
 const calculateBtn = document.querySelector('.calculateBtn');
@@ -38,14 +39,18 @@ calculateBtn.addEventListener('click', function() {
     const returnTripCheckbox = document.querySelector('input[name="returnTripCheckbox"]:checked');
 
     if (returnTripCheckbox && peakOffPeakRadio) {
-        // 
+        // this is the case for when the points are greater than 2 which is a return trip
+        busTravelAppInstance.pointsOfTrips(numberOfPoints.value, destination.value, returnTripCheckbox.value);
+        tripsReturn.innerHTML = busTravelAppInstance.getReturnTripsPoints();
+
+
     } else if (peakOffPeakRadio) {
         // get the value from the input text box
-        busTravelAppInstance.pointsOfSingleTrips(numberOfPoints.value, destination.value);
+        busTravelAppInstance.pointsOfTrips(numberOfPoints.value, destination.value);
         singleTripsNum.innerHTML = busTravelAppInstance.getSingleTripPoints();
 
         // single trip cost
-        busTravelAppInstance.singleTripCost(peakOffPeakRadio.value);
+        busTravelAppInstance.tripsCost(peakOffPeakRadio.value);
         singleTripPrice.innerHTML = busTravelAppInstance.getSingleTripCost();
 
         // setting values in the local storage
