@@ -15,12 +15,12 @@
 // I am also required to calculate and show the cost per return trip.
 
 
-function BusTravelApp(singleTrip) {
+function BusTravelApp(singleTrip, singleTripCostVar) {
     let singleTripsPoints = singleTrip || 0;
     // create a variable for the location
     let startLocation = '';
     // create a variable for the cost of a single trip
-    let singleTripAmount = 0;
+    let singleTripAmount =  singleTripCostVar || 0;
 
     function pointsOfSingleTrips(clientPoints, location) {
         let points = Number(clientPoints);
