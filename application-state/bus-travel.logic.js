@@ -55,10 +55,10 @@ function BusTravelApp(singleTrip, singleTripCostVar, returnTripsPointsVar) {
         if (lowerCaseLocation === 'khayelitsha') {
             // add the cost of a single trip
             singleTripAmount = 40;
-            returnTripAmount = singleTripAmount;
+            returnTripAmount = singleTripAmount * returnTripPoints;
         }
 
-        if (lowerCaseLocation === 'khayelitsha' && offPeak) {
+        if (lowerCaseLocation === 'khayelitsha' && offPeak === 'peak') {
             // when the time is not normal bus time add 25% to the amount
             singleTripAmount += (40 * 25 / 100) + 40;
             returnTripAmount = singleTripAmount * returnTripPoints;
@@ -66,20 +66,20 @@ function BusTravelApp(singleTrip, singleTripCostVar, returnTripsPointsVar) {
 
         if (lowerCaseLocation === 'dunoon') {
             singleTripAmount = 25;
-            returnTripAmount = singleTripAmount;
+            returnTripAmount = singleTripAmount * returnTripPoints;
         }
 
-        if (lowerCaseLocation === 'dunoon' && offPeak) {
+        if (lowerCaseLocation === 'dunoon' && offPeak === 'peak') {
             singleTripAmount += (25 * 25 / 100) + 25;
             returnTripAmount = singleTripAmount * returnTripPoints;
         }
 
         if (lowerCaseLocation === 'mitchells plain') {
             singleTripAmount = 30;
-            returnTripAmount = singleTripAmount;
+            returnTripAmount = singleTripAmount * returnTripPoints;
         }
 
-        if (lowerCaseLocation === 'mitchells plain' && offPeak) {
+        if (lowerCaseLocation === 'mitchells plain' && offPeak === 'peak') {
             singleTripAmount += (30 * 25 / 100) + 30;
             returnTripAmount = singleTripAmount * returnTripPoints;
         }
