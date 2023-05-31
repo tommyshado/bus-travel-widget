@@ -13,3 +13,20 @@
 // the widget should should number of return trips she can make 
 
 // I am also required to calculate and show the cost per return trip.
+
+
+function BusTravelApp() {
+    let amountOfPointsAvailable = 0;
+    function setAmountOfPoints(clientPoints) {
+        amountOfPointsAvailable = clientPoints;
+    }
+
+    function getAmountOfPoints() {
+        return amountOfPointsAvailable;
+    }
+
+    return {
+        setAmountOfPoints,
+        getAmountOfPoints
+    }
+}
