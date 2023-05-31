@@ -28,14 +28,14 @@ describe('The Bus Travel App functionality unit testing', function() {
         it('should be able to calculate the single trip cost for a start location when it"s not normal time', function() {
             const busTravel = BusTravelApp();
             busTravel.pointsOfTrips(1, 'khayelitsha');
-            busTravel.tripsCost(true);
+            busTravel.tripsCost('peak');
             assert.equal(90, busTravel.getSingleTripCost());
         });
     
         it('should be able to calculate the single trip cost for a start location when it"s not normal time', function() {
             const busTravel = BusTravelApp();
             busTravel.pointsOfTrips(1, 'mitchells plain');
-            busTravel.tripsCost(true);
+            busTravel.tripsCost('peak');
             assert.equal(67.5, busTravel.getSingleTripCost());
         });
     });
@@ -56,7 +56,7 @@ describe('The Bus Travel App functionality unit testing', function() {
         it('should be to calculate the return trip amount when it"s not the normal time', function() {
             const busTravel = BusTravelApp();
             busTravel.pointsOfTrips(2, 'khayelitsha', 'check');
-            busTravel.tripsCost(true);
+            busTravel.tripsCost('peak');
             assert.equal(180, busTravel.getReturnTripCost());
         });
 
