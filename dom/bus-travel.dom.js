@@ -43,6 +43,9 @@ calculateBtn.addEventListener('click', function() {
         busTravelAppInstance.pointsOfTrips(numberOfPoints.value, destination.value, returnTripCheckbox.value);
         tripsReturn.innerHTML = busTravelAppInstance.getReturnTripsPoints();
 
+        // local storage for trips return
+        localStorage.setItem('pointsForTripsReturn', tripsReturn.innerHTML);
+
 
     } else if (peakOffPeakRadio) {
         // get the value from the input text box
