@@ -1,0 +1,11 @@
+body {
+    background-color: #f1faee;
+}
+
+/* sections styling */
+
+.section {
+    padding: 1.5em;
+    margin: 1.5em;
+    background-color: #457B9D;
+}
