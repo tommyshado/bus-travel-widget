@@ -13,8 +13,41 @@
 
             <div class="section">
 
-                <label for="points">Points:</label>
-                <input type="text" class="numberOfPoints">
+                <div>
+                    <label for="points">Points:</label>
+                    <input type="text" class="numberOfPoints" name="points" placeholder="enter points">
+                </div>
+                
+                <div>
+                    <label for="destinations">Start location:</label>
+                    <select name="destinations" id="destination">
+                        <option value="khayelitsha">Khayelitsha</option>
+                        <option value="Dunoon">Dunoon</option>
+                        <option value="michells-plain">Michells plain</option>
+                    </select>
+                </div>
+                
+                <h2>Travel Times:</h2>
+
+                <div>
+                    <input type="radio" class="peakRadio" name="peakOffPeak" value="peak">
+                    <label for="peak">Peak</label>
+                </div>
+
+                
+                <div>
+                    <input type="radio" class="peakRadio" name="peakOffPeak" value="offPeak">
+                    <label for="peak">Off Peak</label>
+                </div>
+                
+                <div>
+                    <input type="checkbox" id="returnTrip" name="returnTripCheckbox">
+                    <label for="checkbox">Return trip</label>
+                </div>
+
+                <div class="calculateBtn">
+                    <button>Calculate</button>
+                </div>
 
             </div>
             
