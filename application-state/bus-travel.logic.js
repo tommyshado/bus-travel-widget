@@ -37,12 +37,14 @@ function BusTravelApp(singleTrip, singleTripCostVar) {
     }
 
     function singleTripCost(offPeak) {
+        // set the single trip amount to zero for the first time
+        singleTripAmount = 0;
         // set the location to lower case
         let lowerCaseLocation = startLocation.toLowerCase();
         // check if the global variable `location` is equal to Khayelitsha without offPeak time travel 
         if (lowerCaseLocation === 'khayelitsha') {
             // add the cost of a single trip
-            singleTripAmount += 40;
+            singleTripAmount = 40;
         }
 
         if (lowerCaseLocation === 'khayelitsha' && offPeak) {
@@ -51,7 +53,7 @@ function BusTravelApp(singleTrip, singleTripCostVar) {
         }
 
         if (lowerCaseLocation === 'dunoon') {
-            singleTripAmount += 25;
+            singleTripAmount = 25;
         }
 
         if (lowerCaseLocation === 'dunoon' && offPeak) {
@@ -59,7 +61,7 @@ function BusTravelApp(singleTrip, singleTripCostVar) {
         }
 
         if (lowerCaseLocation === 'mitchells plain') {
-            singleTripAmount += 30;
+            singleTripAmount = 30;
         }
 
         if (lowerCaseLocation === 'mitchells plain' && offPeak) {
