@@ -22,53 +22,71 @@ function BusTravelApp(singleTrip, singleTripCostVar) {
     // create a variable for the cost of a single trip
     let singleTripAmount =  singleTripCostVar || 0;
 
-    function pointsOfSingleTrips(clientPoints, location) {
+    // variables for return trips
+    let returnTripPoints = 0;
+    let returnTripAmount = 0;
+
+    function pointsOfTrips(clientPoints, location, returnCheckBox) {
         let points = Number(clientPoints);
         // if in the user the client selects location in the dropdown
         if (location) {
             // check if the points is equal to 1, since a single trip is usually one trip
             if (points === 1) {
                 // add one to the singleTripsPoints variable
-                singleTripsPoints += points;
+                singleTripsPoints = points;
                 // reassign the startLocation with the current location
+                startLocation = location;
+
+                // because the points may be 2 which is a return trip
+            } else if (returnCheckBox && points > 1) {
+                returnTripPoints = points;
                 startLocation = location;
             }
         }
     }
 
-    function singleTripCost(offPeak) {
+    function tripsCost(offPeak) {
         // set the single trip amount to zero for the first time
         singleTripAmount = 0;
+        returnTripAmount = 0;
         // set the location to lower case
         let lowerCaseLocation = startLocation.toLowerCase();
         // check if the global variable `location` is equal to Khayelitsha without offPeak time travel 
         if (lowerCaseLocation === 'khayelitsha') {
             // add the cost of a single trip
             singleTripAmount = 40;
+            returnTripAmount = singleTripAmount * returnTripPoints;
         }
 
         if (lowerCaseLocation === 'khayelitsha' && offPeak) {
             // when the time is not normal bus time add 25% to the amount
             singleTripAmount += (40 * 25 / 100) + 40;
+            returnTripAmount = singleTripAmount * returnTripPoints;
         }
 
         if (lowerCaseLocation === 'dunoon') {
             singleTripAmount = 25;
+            returnTripAmount = singleTripAmount * returnTripPoints;
         }
 
         if (lowerCaseLocation === 'dunoon' && offPeak) {
             singleTripAmount += (25 * 25 / 100) + 25;
+            returnTripAmount = singleTripAmount * returnTripPoints;
         }
 
         if (lowerCaseLocation === 'mitchells plain') {
+            returnTripAmount = singleTripAmount * returnTripPoints;
             singleTripAmount = 30;
         }
 
         if (lowerCaseLocation === 'mitchells plain' && offPeak) {
             singleTripAmount += (30 * 25 / 100) + 30;
+            returnTripAmount = singleTripAmount * returnTripPoints;
         }
     }
 
+
+    
     function getSingleTripPoints() {
         return singleTripsPoints;
     }
@@ -77,10 +95,20 @@ function BusTravelApp(singleTrip, singleTripCostVar) {
         return singleTripAmount;
     }
 
+    function getReturnTripsPoints() {
+        return returnTripPoints;
+    }
+
+    function getReturnTripCost() {
+        return returnTripAmount;
+    }
+
     return {
-        pointsOfSingleTrips,
+        pointsOfTrips,
         getSingleTripPoints,
-        singleTripCost,
-        getSingleTripCost
+        tripsCost,
+        getSingleTripCost,
+        getReturnTripsPoints,
+        getReturnTripCost
     }
 }
