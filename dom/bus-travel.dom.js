@@ -12,11 +12,19 @@ const calculateBtn = document.querySelector('.calculateBtn');
 
 
 // variable to be reassigned with values that we will get from the local storage and then pass them into the factory function as arguments
+
+// single trips
 let singleTrip = 0;
 let singleTripCostVar = 0;
 
+// return trips
+let returnTripsPointsVar = 0;
+
 
 // local storage code
+
+// single trips
+
 if (localStorage['singleTrips']) {
     // get the value in the local storage
     singleTrip = Number(localStorage['singleTrips']);
@@ -28,8 +36,15 @@ if (localStorage['singleTripCost']) {
     singleTripPrice.innerHTML = singleTripCostVar;
 }
 
+// return trips
+
+if (localStorage['pointsForTripsReturn']) {
+    returnTripsPointsVar = Number(localStorage['pointsForTripsReturn']);
+    tripsReturn.innerHTML = returnTripsPointsVar;
+}
+
 // factory function instance for the bus travel widget
-const busTravelAppInstance = BusTravelApp(singleTrip, singleTripCostVar);
+const busTravelAppInstance = BusTravelApp(singleTrip, singleTripCostVar, returnTripsPointsVar);
 
 // events elements
 calculateBtn.addEventListener('click', function() {
