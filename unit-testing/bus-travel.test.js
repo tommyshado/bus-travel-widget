@@ -53,6 +53,18 @@ describe('The Bus Travel App functionality unit testing', function() {
             assert.equal(6, busTravel.getReturnTripsPoints());
         });
 
-        
+        it('should be to calculate the return trip amount when it"s not the normal time', function() {
+            const busTravel = BusTravelApp();
+            busTravel.pointsOfTrips(2, 'khayelitsha', 'check');
+            busTravel.tripsCost(true);
+            assert.equal(180, busTravel.getReturnTripCost());
+        });
+
+        it('should be to calculate the return trip amount when it"s the normal time', function() {
+            const busTravel = BusTravelApp();
+            busTravel.pointsOfTrips(2, 'khayelitsha', 'check');
+            busTravel.tripsCost();
+            assert.equal(80, busTravel.getReturnTripCost());
+        });
     });
 })
