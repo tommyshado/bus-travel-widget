@@ -15,18 +15,19 @@
 // I am also required to calculate and show the cost per return trip.
 
 
-function BusTravelApp() {
-    let amountOfPointsAvailable = 0;
-    function setAmountOfPoints(clientPoints) {
-        amountOfPointsAvailable = clientPoints;
+function BusTravelApp(singleTrip) {
+    let singleTripsAmount = singleTrip || 0;
+
+    function amountOfSingleTrips(clientPoints) {
+        singleTripsAmount += Number(clientPoints);
     }
 
-    function getAmountOfPoints() {
-        return amountOfPointsAvailable;
+    function getSingleTripAmount() {
+        return singleTripsAmount;
     }
 
     return {
-        setAmountOfPoints,
-        getAmountOfPoints
+        amountOfSingleTrips,
+        getSingleTripAmount
     }
 }
