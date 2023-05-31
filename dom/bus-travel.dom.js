@@ -6,6 +6,7 @@ const destination = document.querySelector('#destination');
 const singleTripsNum = document.querySelector('.singleTripsNumber');
 const singleTripPrice = document.querySelector('.singleTripsPrice');
 const tripsReturn = document.querySelector('.numberOfReturnTrips');
+const returnTripPrice = document.querySelector('.returnTripCost');
 
 // buttons
 const calculateBtn = document.querySelector('.calculateBtn');
@@ -19,7 +20,7 @@ let singleTripCostVar = 0;
 
 // return trips
 let returnTripsPointsVar = 0;
-
+let returnTripsCostVar = 0;
 
 // local storage code
 
@@ -43,8 +44,13 @@ if (localStorage['pointsForTripsReturn']) {
     tripsReturn.innerHTML = returnTripsPointsVar;
 }
 
+if (localStorage['costPricePerReturn']) {
+    returnTripsCostVar = Number(localStorage['costPricePerReturn']);
+    returnTripPrice.innerHTML = returnTripsCostVar;
+}
+
 // factory function instance for the bus travel widget
-const busTravelAppInstance = BusTravelApp(singleTrip, singleTripCostVar, returnTripsPointsVar);
+const busTravelAppInstance = BusTravelApp(singleTrip, singleTripCostVar, returnTripsPointsVar, returnTripsCostVar);
 
 // events elements
 calculateBtn.addEventListener('click', function() {
@@ -58,9 +64,13 @@ calculateBtn.addEventListener('click', function() {
         busTravelAppInstance.pointsOfTrips(numberOfPoints.value, destination.value, returnTripCheckbox.value);
         tripsReturn.innerHTML = busTravelAppInstance.getReturnTripsPoints();
 
+        // return trip cost price code
+        busTravelAppInstance.tripsCost(peakOffPeakRadio.value);
+        returnTripPrice.innerHTML = busTravelAppInstance.getReturnTripCost();
+
         // local storage for trips return
         localStorage.setItem('pointsForTripsReturn', tripsReturn.innerHTML);
-
+        localStorage.setItem('costPricePerReturn', returnTripPrice.innerHTML);
 
     } else if (peakOffPeakRadio) {
         // get the value from the input text box
