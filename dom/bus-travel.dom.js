@@ -34,7 +34,7 @@ calculateBtn.addEventListener('click', function() {
         // 
     } else {
         // get the value from the input text box
-        busTravelAppInstance.amountOfSingleTrips(numberOfPoints.value);
+        busTravelAppInstance.pointsOfSingleTrips(numberOfPoints.value, destination.value);
         singleTripsNum.innerHTML = busTravelAppInstance.getSingleTripAmount();
         localStorage.setItem('singleTrips', singleTripsNum.innerHTML);
     }
