@@ -1,4 +1,5 @@
 // get input reference elements for the bus travel widget
+const numberOfPoints = document.querySelector('.numberOfPoints');
 
 // get the calculate dom elements reference for the bus travel widget
 
