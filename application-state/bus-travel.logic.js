@@ -18,8 +18,12 @@
 function BusTravelApp(singleTrip) {
     let singleTripsAmount = singleTrip || 0;
 
-    function amountOfSingleTrips(clientPoints) {
-        singleTripsAmount += Number(clientPoints);
+    // create
+    function pointsOfSingleTrips(clientPoints) {
+        let points = Number(clientPoints);
+        if (points === 1) {
+            singleTripsAmount += points;
+        }
     }
 
     function getSingleTripAmount() {
@@ -27,7 +31,7 @@ function BusTravelApp(singleTrip) {
     }
 
     return {
-        amountOfSingleTrips,
+        pointsOfSingleTrips,
         getSingleTripAmount
     }
 }
