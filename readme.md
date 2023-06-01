@@ -1,4 +1,4 @@
-<strong>Bus Travel Widget</strong>
+<strong>#Bus Travel Widget</strong>
 
 A local worker uses the bus to travel to work everyday, they need a widget that will help them calculate how many trips they can make to travel for an amount of points entered and selected destination and travel times (peak vs off-peak). 
 
